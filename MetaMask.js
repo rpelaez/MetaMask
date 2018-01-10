@@ -41,11 +41,13 @@
             //alert(button);
             web3.eth.getAccounts(function(err, accounts) { console.log(accounts); document.getElementById("etherlog").innerHTML = "Cargando Cuenta "+ accounts; address = accounts.toString(); });
             button.addEventListener('click', function() {
-                miniToken.buy( { from: address, value: '1000000000000000000', data: '0x123' })
+                // 1 Eth = '1000000000000000000'
+                miniToken.buy( { from: address, value: '1', data: '0x123' })
                     .then(function (txHash) {
                     console.log('Transaction sent');
                     console.dir(txHash);
                     waitForTxToBeMined(txHash);
+                    document.getElementById("etherlog").innerHTML = "txHash:" + txHash;
                 })
                     .catch(console.error);
             });
@@ -58,6 +60,7 @@
                     var data = [];
                     data.append(eth.getTransactionReceipt(txReceipt).data);
                     console.log(data);
+                    document.getElementById("etherlog").innerHTML = "Data:" + data;
                 } catch (err) {
                     return indicateFailure(err);
                 }
