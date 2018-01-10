@@ -62,9 +62,11 @@
                     console.log(data);
                     document.getElementById("etherlog").innerHTML = "Data:" + data;
                 } catch (err) {
+                    document.getElementById("etherlog").innerHTML = "ERROR:"+err;
                     return indicateFailure(err);
                 }
             }
+            document.getElementById("etherlog").innerHTML = "OK!";
             indicateSuccess();
         }
     
