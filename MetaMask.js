@@ -57,9 +57,9 @@
             while (!txReceipt) {
                 try {
                     txReceipt = await eth.getTransactionReceipt(txHash);
-                    var data = [];
-                    data.append(eth.getTransactionReceipt(txReceipt).data);
-                    console.log(data);
+                    //var data = [];
+                    //data.append(eth.getTransactionReceipt(txReceipt).data);
+                    //console.log(data);
                     document.getElementById("etherlog").innerHTML = "Data:" + data;
                 } catch (err) {
                     document.getElementById("etherlog").innerHTML = "ERROR:"+err;
