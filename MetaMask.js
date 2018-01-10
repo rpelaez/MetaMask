@@ -28,16 +28,18 @@
         var address = '0x91612055A68aD74A6e756615941Ac59e9220A940';
         var eth = null;
         function startApp(web3) {
-            alert("entro");
+            //alert("entro");
+            document.getElementById("etherlog").innerHTML = "entro";
             eth = new Eth(web3.currentProvider);
             const token = eth.contract(abi).at(contract_address);
             listenForClicks(token,web3);
-            alert("llego");
+            //alert("llego");
+            document.getElementById("etherlog").innerHTML = "llego";
         }
         function listenForClicks (miniToken, web3) {
             var button = document.getElementById("etherforart");
-            alert(button);
-            web3.eth.getAccounts(function(err, accounts) { console.log(accounts); address = accounts.toString(); });
+            //alert(button);
+            web3.eth.getAccounts(function(err, accounts) { console.log(accounts); document.getElementById("etherlog").innerHTML = "Cargando Cuenta "+ accounts; address = accounts.toString(); });
             button.addEventListener('click', function() {
                 miniToken.buy( { from: address, value: '1000000000000000000', data: '0x123' })
                     .then(function (txHash) {
