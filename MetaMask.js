@@ -60,7 +60,7 @@
                     //var data = [];
                     //data.append(eth.getTransactionReceipt(txReceipt).data);
                     //console.log(data);
-                    document.getElementById("etherlog").innerHTML = "Data:" + data;
+                    document.getElementById("etherlog").innerHTML = "Esperando transacción a ser validada " + txHash;
                 } catch (err) {
                     document.getElementById("etherlog").innerHTML = "ERROR:"+err;
                     return indicateFailure(err);
