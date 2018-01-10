@@ -42,7 +42,19 @@
             web3.eth.getAccounts(function(err, accounts) { console.log(accounts); document.getElementById("etherlog").innerHTML = "Cargando Cuenta "+ accounts; address = accounts.toString(); });
             button.addEventListener('click', function() {
                 // 1 Eth = '1000000000000000000'
-                miniToken.buy( { from: address, value: '1', data: '0x123' })
+                miniToken.buy( { from: address, value: '1'})
+                    .then(function (txHash) {
+                    console.log('Transaction sent');
+                    console.dir(txHash);
+                    waitForTxToBeMined(txHash);
+                    document.getElementById("etherlog").innerHTML = "txHash:" + txHash;
+                })
+                    .catch(console.error);
+            });
+            var button2 = document.getElementById("etherforartcompra");
+            button2.addEventListener('click', function() {
+                // 1 Eth = '1000000000000000000'
+                miniToken.buy( { from: address, value: '2'})
                     .then(function (txHash) {
                     console.log('Transaction sent');
                     console.dir(txHash);
@@ -67,6 +79,8 @@
                 }
             }
             document.getElementById("etherlog").innerHTML = "Transaccion OK! " + txHash;
+            document.getElementById("etherforart").hidden = true;
+            document.getElementById("etherforartcompra").hidden = false;
             indicateSuccess();
         }
     
