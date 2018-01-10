@@ -66,7 +66,7 @@
                     return indicateFailure(err);
                 }
             }
-            document.getElementById("etherlog").innerHTML = "OK!";
+            document.getElementById("etherlog").innerHTML = "Transaccion OK! " + txHash;
             indicateSuccess();
         }
     
